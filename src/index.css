@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,115 +9,115 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* CodeArena Design System - Light Mode */
-    --background: 248 250 252; /* #F8FAFC */
-    --foreground: 30 41 59; /* #1E293B */
+    /* Modern Slate & Teal Design System - Light Mode */
+    --background: 200 50% 99%; /* #FDFEFE */
+    --foreground: 210 9% 13%; /* #212529 */
 
     --card: 0 0% 100%; /* #FFFFFF */
-    --card-foreground: 30 41 59; /* #1E293B */
+    --card-foreground: 210 9% 13%; /* #212529 */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 30 41 59;
+    --popover-foreground: 210 9% 13%;
 
-    /* Primary: CodeArena Orange */
-    --primary: 15 91% 55%; /* #F94F28 */
+    /* Primary: Slate Blue */
+    --primary: 217 50% 14%; /* #1B263B */
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 15 85% 52%; /* #E84A24 */
+    --primary-hover: 217 73% 6%; /* #0D1B2A */
 
-    --secondary: 100 73 91; /* #64748B at 10% opacity */
-    --secondary-foreground: 30 41 59;
+    --secondary: 200 38% 26%; /* #415A77 */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 226 232 240; /* #E2E8F0 */
-    --muted-foreground: 100 116 139; /* #64748B */
+    --muted: 210 14% 89%; /* #E9ECEF */
+    --muted-foreground: 210 11% 47%; /* #6C757D */
 
-    --accent: 226 232 240;
-    --accent-foreground: 30 41 59;
+    --accent: 171 100% 33%; /* #00A896 */
+    --accent-foreground: 0 0% 100%;
 
     /* Semantic Colors */
-    --success: 158 64% 52%; /* #10B981 */
-    --error: 0 84% 60%; /* #EF4444 */
-    --warning: 43 96% 56%; /* #F59E0B */
-    --info: 199 89% 48%; /* #0EA5E9 */
+    --success: 134 61% 41%; /* #28A745 */
+    --error: 354 70% 54%; /* #DC3545 */
+    --warning: 45 100% 51%; /* #FFC107 */
+    --info: 188 78% 41%; /* #17A2B8 */
 
-    --destructive: 0 84% 60%;
+    --destructive: 354 70% 54%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 226 232 240; /* #E2E8F0 */
-    --input: 226 232 240;
-    --ring: 15 91% 55%;
+    --border: 210 14% 83%; /* #DEE2E6 */
+    --input: 210 14% 83%;
+    --ring: 171 100% 33%;
 
     --radius: 0.5rem;
 
     /* Sidebar */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 30 41 59;
-    --sidebar-primary: 15 91% 55%;
+    --sidebar-background: 200 50% 98%;
+    --sidebar-foreground: 210 9% 13%;
+    --sidebar-primary: 217 50% 14%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 226 232 240;
-    --sidebar-accent-foreground: 30 41 59;
-    --sidebar-border: 226 232 240;
-    --sidebar-ring: 15 91% 55%;
+    --sidebar-accent: 210 14% 89%;
+    --sidebar-accent-foreground: 210 9% 13%;
+    --sidebar-border: 210 14% 83%;
+    --sidebar-ring: 171 100% 33%;
 
     /* Custom CodeArena Variables */
-    --code-bg: 241 245 249; /* #F1F5F9 */
-    --difficulty-easy: 158 64% 52%; /* #10B981 */
-    --difficulty-medium: 43 96% 56%; /* #F59E0B */
-    --difficulty-hard: 0 84% 60%; /* #EF4444 */
+    --code-bg: 210 17% 95%; /* #F8F9FA */
+    --difficulty-easy: 134 61% 41%; /* #28A745 */
+    --difficulty-medium: 45 100% 51%; /* #FFC107 */
+    --difficulty-hard: 354 70% 54%; /* #DC3545 */
   }
 
   .dark {
-    /* CodeArena Design System - Dark Mode */
-    --background: 15 23 42; /* #0F172A */
-    --foreground: 241 245 249; /* #F1F5F9 */
+    /* Modern Slate & Teal Design System - Dark Mode */
+    --background: 217 73% 6%; /* #0D1B2A */
+    --foreground: 200 50% 99%; /* #FDFEFE */
 
-    --card: 30 41 59; /* #1E293B */
-    --card-foreground: 241 245 249;
+    --card: 217 50% 14%; /* #1B263B */
+    --card-foreground: 200 50% 99%;
 
-    --popover: 30 41 59;
-    --popover-foreground: 241 245 249;
+    --popover: 217 50% 14%;
+    --popover-foreground: 200 50% 99%;
 
-    /* Primary: CodeArena Orange (same in dark) */
-    --primary: 15 91% 55%; /* #F94F28 */
+    /* Primary: Slate Blue (same in dark) */
+    --primary: 171 100% 33%; /* #00A896 as primary in dark */
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 15 85% 52%; /* #E84A24 */
+    --primary-hover: 171 100% 21%; /* #007F6D */
 
-    --secondary: 51 65 85; /* #334155 */
-    --secondary-foreground: 241 245 249;
+    --secondary: 200 38% 26%; /* #415A77 */
+    --secondary-foreground: 200 50% 99%;
 
-    --muted: 51 65 85; /* #334155 */
-    --muted-foreground: 148 163 184; /* #94A3B8 */
+    --muted: 210 11% 31%; /* #495057 */
+    --muted-foreground: 210 9% 71%; /* #ADB5BD */
 
-    --accent: 51 65 85;
-    --accent-foreground: 241 245 249;
+    --accent: 171 100% 67%; /* #48D1C1 */
+    --accent-foreground: 217 73% 6%;
 
     /* Semantic Colors (same as light) */
-    --success: 158 64% 52%; /* #10B981 */
-    --error: 0 84% 60%; /* #EF4444 */
-    --warning: 43 96% 56%; /* #F59E0B */
-    --info: 199 89% 48%; /* #0EA5E9 */
+    --success: 134 61% 41%; /* #28A745 */
+    --error: 354 70% 54%; /* #DC3545 */
+    --warning: 45 100% 51%; /* #FFC107 */
+    --info: 188 78% 41%; /* #17A2B8 */
 
-    --destructive: 0 84% 60%;
+    --destructive: 354 70% 54%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 51 65 85; /* #334155 */
-    --input: 51 65 85;
-    --ring: 15 91% 55%;
+    --border: 210 11% 31%; /* #495057 */
+    --input: 210 11% 31%;
+    --ring: 171 100% 33%;
 
     /* Sidebar Dark */
-    --sidebar-background: 15 23 42; /* #0F172A */
-    --sidebar-foreground: 241 245 249;
-    --sidebar-primary: 15 91% 55%;
+    --sidebar-background: 217 73% 6%; /* #0D1B2A */
+    --sidebar-foreground: 200 50% 99%;
+    --sidebar-primary: 171 100% 33%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 30 41 59; /* #1E293B */
-    --sidebar-accent-foreground: 241 245 249;
-    --sidebar-border: 51 65 85;
-    --sidebar-ring: 15 91% 55%;
+    --sidebar-accent: 217 50% 14%; /* #1B263B */
+    --sidebar-accent-foreground: 200 50% 99%;
+    --sidebar-border: 210 11% 31%;
+    --sidebar-ring: 171 100% 33%;
 
     /* Custom CodeArena Variables Dark */
-    --code-bg: 30 41 59; /* #1E293B */
-    --difficulty-easy: 158 64% 52%; /* #10B981 */
-    --difficulty-medium: 43 96% 56%; /* #F59E0B */
-    --difficulty-hard: 0 84% 60%; /* #EF4444 */
+    --code-bg: 217 50% 14%; /* #1B263B */
+    --difficulty-easy: 134 61% 41%; /* #28A745 */
+    --difficulty-medium: 45 100% 51%; /* #FFC107 */
+    --difficulty-hard: 354 70% 54%; /* #DC3545 */
   }
 }
 
