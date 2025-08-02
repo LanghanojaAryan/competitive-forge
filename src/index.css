@@ -9,7 +9,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Neon Terminal Design System - Light Mode (for compatibility) */
+    /* Professional Terminal Design System - Light Mode (for compatibility) */
     --background: 0 0% 94%; /* #F0F0F0 */
     --foreground: 264 88% 7%; /* #0D0221 */
 
@@ -19,10 +19,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 264 88% 7%;
 
-    /* Primary: Neon Magenta */
-    --primary: 314 100% 49%; /* #F900BF */
+    /* Primary: Electric Blue */
+    --primary: 217 91% 60%; /* #3B82F6 */
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 314 100% 39%; /* #C7009C */
+    --primary-hover: 217 91% 45%; /* #2563EB */
 
     --secondary: 175 100% 48%; /* #00F5D4 */
     --secondary-foreground: 264 88% 7%;
@@ -30,13 +30,13 @@ All colors MUST be HSL.
     --muted: 240 9% 84%; /* #D1D1D1 */
     --muted-foreground: 240 14% 44%; /* #6E6E7E */
 
-    --accent: 175 100% 48%; /* #00F5D4 */
-    --accent-foreground: 264 88% 7%;
+    --accent: 217 91% 60%; /* #3B82F6 */
+    --accent-foreground: 0 0% 100%;
 
     /* Semantic Colors */
     --success: 150 100% 50%; /* #00FF7F */
     --error: 4 100% 59%; /* #FF3B30 */
-    --warning: 50 100% 50%; /* #FFD700 */
+    --warning: 39 100% 50%; /* #FFAB00 */
     --info: 199 95% 68%; /* #5AC8FA */
 
     --destructive: 4 100% 59%;
@@ -44,19 +44,19 @@ All colors MUST be HSL.
 
     --border: 240 14% 44%; /* #6E6E7E */
     --input: 240 14% 44%;
-    --ring: 314 100% 49%;
+    --ring: 217 91% 60%;
 
     --radius: 0.5rem;
 
     /* Sidebar */
     --sidebar-background: 0 0% 94%;
     --sidebar-foreground: 264 88% 7%;
-    --sidebar-primary: 314 100% 49%;
+    --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 9% 84%;
     --sidebar-accent-foreground: 264 88% 7%;
     --sidebar-border: 240 14% 44%;
-    --sidebar-ring: 314 100% 49%;
+    --sidebar-ring: 217 91% 60%;
 
     /* Custom CodeArena Variables */
     --code-bg: 0 0% 94%; /* #F0F0F0 */
@@ -66,7 +66,7 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Neon Terminal Design System - Dark Mode (main theme) */
+    /* Professional Terminal Design System - Dark Mode (main theme) */
     --background: 264 88% 7%; /* #0D0221 */
     --foreground: 0 0% 94%; /* #F0F0F0 */
 
@@ -76,10 +76,10 @@ All colors MUST be HSL.
     --popover: 276 68% 11%;
     --popover-foreground: 0 0% 94%;
 
-    /* Primary: Neon Magenta */
-    --primary: 314 100% 49%; /* #F900BF */
+    /* Primary: Electric Blue */
+    --primary: 217 91% 60%; /* #3B82F6 */
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 314 100% 67%; /* #FF55D4 */
+    --primary-hover: 217 91% 70%; /* #60A5FA */
 
     --secondary: 175 100% 48%; /* #00F5D4 */
     --secondary-foreground: 264 88% 7%;
@@ -93,7 +93,7 @@ All colors MUST be HSL.
     /* Semantic Colors */
     --success: 150 100% 50%; /* #00FF7F */
     --error: 4 100% 59%; /* #FF3B30 */
-    --warning: 50 100% 50%; /* #FFD700 */
+    --warning: 39 100% 50%; /* #FFAB00 */
     --info: 199 95% 68%; /* #5AC8FA */
 
     --destructive: 4 100% 59%;
@@ -101,17 +101,17 @@ All colors MUST be HSL.
 
     --border: 240 16% 29%; /* #3A3A4A */
     --input: 240 16% 29%;
-    --ring: 314 100% 49%;
+    --ring: 217 91% 60%;
 
     /* Sidebar Dark */
     --sidebar-background: 264 88% 7%; /* #0D0221 */
     --sidebar-foreground: 0 0% 94%;
-    --sidebar-primary: 314 100% 49%;
+    --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 276 68% 11%; /* #14082E */
     --sidebar-accent-foreground: 0 0% 94%;
     --sidebar-border: 240 16% 29%;
-    --sidebar-ring: 314 100% 49%;
+    --sidebar-ring: 217 91% 60%;
 
     /* Custom CodeArena Variables Dark */
     --code-bg: 276 68% 11%; /* #14082E */
