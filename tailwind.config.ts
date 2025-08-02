@@ -18,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -26,7 +29,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					hover: 'hsl(var(--primary-hover))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -61,6 +65,17 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// CodeArena semantic colors
+				success: 'hsl(var(--success))',
+				error: 'hsl(var(--error))',
+				warning: 'hsl(var(--warning))',
+				info: 'hsl(var(--info))',
+				// Difficulty colors
+				difficulty: {
+					easy: 'hsl(var(--difficulty-easy))',
+					medium: 'hsl(var(--difficulty-medium))',
+					hard: 'hsl(var(--difficulty-hard))'
 				}
 			},
 			borderRadius: {
