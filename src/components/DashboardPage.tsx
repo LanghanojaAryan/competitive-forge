@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
@@ -24,7 +25,7 @@ import {
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 
-const DashboardPage = () => {
+const DashboardPage = ({ onViewChange }: any) => {
   const { user } = useAuth();
 
   // Prepare chart data
@@ -68,6 +69,71 @@ const DashboardPage = () => {
         <p className="text-muted-foreground">
           Welcome back, {user.name}! Here's your coding progress overview.
         </p>
+      </div>
+
+      {/* Learning Features Quick Access */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <Card className="bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/20 hover:border-primary/40 transition-all cursor-pointer group">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center text-lg">
+              <svg className="w-6 h-6 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              Explore Courses
+            </CardTitle>
+            <CardDescription>Master new skills with our comprehensive course library</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button 
+              onClick={() => onViewChange?.('courses')}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group-hover:scale-105 transition-transform"
+            >
+              Browse Courses
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-br from-secondary/10 to-primary/10 border-secondary/20 hover:border-secondary/40 transition-all cursor-pointer group">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center text-lg">
+              <svg className="w-6 h-6 mr-2 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Take Assessment
+            </CardTitle>
+            <CardDescription>Test your knowledge with our interactive exams</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button 
+              onClick={() => onViewChange?.('exam')}
+              variant="outline" 
+              className="w-full border-secondary text-secondary hover:bg-secondary/10 group-hover:scale-105 transition-transform"
+            >
+              Start Exam
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-br from-warning/10 to-error/10 border-warning/20 hover:border-warning/40 transition-all cursor-pointer group">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center text-lg">
+              <svg className="w-6 h-6 mr-2 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+              Learning Paths
+            </CardTitle>
+            <CardDescription>Follow structured roadmaps to achieve your goals</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button 
+              onClick={() => onViewChange?.('learning-paths')}
+              variant="outline" 
+              className="w-full border-warning text-warning hover:bg-warning/10 group-hover:scale-105 transition-transform"
+            >
+              View Paths
+            </Button>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Top Stats Cards */}

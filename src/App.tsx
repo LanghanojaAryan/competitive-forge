@@ -13,14 +13,19 @@ import ContestsPage from './components/ContestsPage';
 import ContestDetailsPage from './components/ContestDetailsPage';
 import ProblemSolvingPage from './components/ProblemSolvingPage';
 import ProfilePage from './components/ProfilePage';
+import ExamPage from './components/ExamPage';
+import CoursesPage from './components/CoursesPage';
+import LearningPathsPage from './components/LearningPathsPage';
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   const { user, loading }: any = useAuth();
-  const [currentView, setCurrentView] = useState('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'problems' | 'contests' | 'contest-details' | 'problem-solving' | 'profile' | 'exam' | 'courses' | 'learning-paths'>('dashboard');
   const [selectedProblem, setSelectedProblem] = useState(null);
   const [selectedContest, setSelectedContest] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [selectedPath, setSelectedPath] = useState(null);
 
   if (loading) {
     return (
@@ -41,6 +46,22 @@ const AppContent = () => {
     setCurrentView(view);
     setSelectedProblem(null);
     setSelectedContest(null);
+    setSelectedCourse(null);
+    setSelectedPath(null);
+  };
+
+  const handleCourseSelect = (courseId: string) => {
+    setSelectedCourse(courseId);
+    // Navigate to course content or continue with course selection logic
+  };
+
+  const handlePathSelect = (pathId: string) => {
+    setSelectedPath(pathId);
+    // Navigate to learning path content or continue with path selection logic
+  };
+
+  const handleBackToDashboard = () => {
+    setCurrentView('dashboard');
   };
 
   const handleProblemSelect = (problem: any) => {
@@ -97,6 +118,22 @@ const AppContent = () => {
         );
       case 'profile':
         return <ProfilePage />;
+      case 'exam':
+        return <ExamPage onBackToDashboard={handleBackToDashboard} />;
+      case 'courses':
+        return (
+          <CoursesPage 
+            onCourseSelect={handleCourseSelect}
+            onBackToDashboard={handleBackToDashboard}
+          />
+        );
+      case 'learning-paths':
+        return (
+          <LearningPathsPage 
+            onPathSelect={handlePathSelect}
+            onBackToDashboard={handleBackToDashboard}
+          />
+        );
       default:
         return <DashboardPage />;
     }
