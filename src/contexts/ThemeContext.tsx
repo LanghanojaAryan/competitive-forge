@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const ThemeContext = createContext();
+const ThemeContext = createContext<any>({});
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);

@@ -204,13 +204,13 @@ const ProfilePage = () => {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {Object.entries(user.skills).map(([skill, level]) => (
+                {Object.entries(user.skills).map(([skill, level]: [string, any]) => (
                   <div key={skill} className="space-y-2">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">{skill}</span>
-                      <span className="text-sm text-muted-foreground">{level}%</span>
+                      <span className="text-sm font-medium">{skill as any}</span>
+                      <span className="text-sm text-muted-foreground">{level as any}%</span>
                     </div>
-                    <Progress value={level} className="h-2" />
+                    <Progress value={level as any} className="h-2" />
                   </div>
                 ))}
               </div>

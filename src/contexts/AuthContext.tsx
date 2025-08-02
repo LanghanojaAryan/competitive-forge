@@ -70,7 +70,7 @@ function generateRatingHistory() {
   return data;
 }
 
-const AuthContext = createContext();
+const AuthContext = createContext<any>({});
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
