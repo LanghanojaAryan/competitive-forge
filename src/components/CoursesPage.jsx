@@ -19,35 +19,13 @@ import {
   Brain
 } from 'lucide-react';
 
-interface Course {
-  id: string;
-  title: string;
-  description: string;
-  instructor: string;
-  duration: string;
-  level: 'Beginner' | 'Intermediate' | 'Advanced';
-  rating: number;
-  students: number;
-  progress?: number;
-  thumbnail: string;
-  category: string;
-  price: number;
-  lessons: number;
-  skills: string[];
-}
-
-interface CoursesPageProps {
-  onCourseSelect: (courseId: string) => void;
-  onBackToDashboard: () => void;
-}
-
-const CoursesPage: React.FC<CoursesPageProps> = ({ onCourseSelect, onBackToDashboard }) => {
+const CoursesPage = ({ onCourseSelect, onBackToDashboard }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedLevel, setSelectedLevel] = useState('All');
 
   // Mock courses data
-  const courses: Course[] = [
+  const courses = [
     {
       id: '1',
       title: 'Complete Data Structures & Algorithms Masterclass',
@@ -159,7 +137,7 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ onCourseSelect, onBackToDashb
     return matchesSearch && matchesCategory && matchesLevel;
   });
 
-  const getLevelColor = (level: string) => {
+  const getLevelColor = (level) => {
     switch (level) {
       case 'Beginner': return 'text-success bg-success/10 border-success/20';
       case 'Intermediate': return 'text-warning bg-warning/10 border-warning/20';
@@ -168,7 +146,7 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ onCourseSelect, onBackToDashb
     }
   };
 
-  const getCategoryIcon = (category: string) => {
+  const getCategoryIcon = (category) => {
     switch (category) {
       case 'Algorithms': return <Brain className="w-4 h-4" />;
       case 'Programming': return <Code className="w-4 h-4" />;

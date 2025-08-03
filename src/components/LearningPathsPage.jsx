@@ -18,33 +18,10 @@ import {
   TrendingUp
 } from 'lucide-react';
 
-interface LearningPath {
-  id: string;
-  title: string;
-  description: string;
-  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
-  duration: string;
-  courses: number;
-  projects: number;
-  skills: string[];
-  progress: number;
-  enrolled: boolean;
-  category: string;
-  icon: string;
-  estimatedHours: number;
-  completionRate: number;
-  nextMilestone?: string;
-}
-
-interface LearningPathsPageProps {
-  onPathSelect: (pathId: string) => void;
-  onBackToDashboard: () => void;
-}
-
-const LearningPathsPage: React.FC<LearningPathsPageProps> = ({ onPathSelect, onBackToDashboard }) => {
+const LearningPathsPage = ({ onPathSelect, onBackToDashboard }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const learningPaths: LearningPath[] = [
+  const learningPaths = [
     {
       id: '1',
       title: 'Full Stack Web Developer',
@@ -152,7 +129,7 @@ const LearningPathsPage: React.FC<LearningPathsPageProps> = ({ onPathSelect, onB
     selectedCategory === 'All' || path.category === selectedCategory
   );
 
-  const getDifficultyColor = (difficulty: string) => {
+  const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
       case 'Beginner': return 'text-success bg-success/10 border-success/20';
       case 'Intermediate': return 'text-warning bg-warning/10 border-warning/20';
@@ -161,7 +138,7 @@ const LearningPathsPage: React.FC<LearningPathsPageProps> = ({ onPathSelect, onB
     }
   };
 
-  const getIcon = (iconName: string) => {
+  const getIcon = (iconName) => {
     switch (iconName) {
       case 'code': return <Code className="w-8 h-8" />;
       case 'brain': return <Brain className="w-8 h-8" />;
