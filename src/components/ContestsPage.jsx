@@ -63,7 +63,7 @@ const ContestsPage = ({ onContestSelect }) => {
     };
 
     return (
-      <Badge variant={variants[status] as any} className={colors[status]}>
+      <Badge variant={variants[status]} className={colors[status]}>
         {status.charAt(0).toUpperCase() + status.slice(1)}
       </Badge>
     );

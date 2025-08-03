@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -21,11 +22,8 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   const { user, loading } = useAuth();
-  const [currentView, setCurrentView] = useState('dashboard');
-  const [selectedProblem, setSelectedProblem] = useState(null);
-  const [selectedContest, setSelectedContest] = useState(null);
-  const [selectedCourse, setSelectedCourse] = useState(null);
-  const [selectedPath, setSelectedPath] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   if (loading) {
     return (
@@ -42,118 +40,55 @@ const AppContent = () => {
     return <AuthPage />;
   }
 
-  const handleViewChange = (view) => {
-    setCurrentView(view);
-    setSelectedProblem(null);
-    setSelectedContest(null);
-    setSelectedCourse(null);
-    setSelectedPath(null);
-  };
-
+  // Navigation handlers
   const handleCourseSelect = (courseId) => {
-    setSelectedCourse(courseId);
-    // Navigate to course content or continue with course selection logic
+    navigate(`/courses/${courseId}`);
   };
-
   const handlePathSelect = (pathId) => {
-    setSelectedPath(pathId);
-    // Navigate to learning path content or continue with path selection logic
+    navigate(`/learning-paths/${pathId}`);
   };
-
   const handleBackToDashboard = () => {
-    setCurrentView('dashboard');
+    navigate('/dashboard');
   };
-
   const handleProblemSelect = (problem) => {
-    setSelectedProblem(problem);
-    setCurrentView('problem-solving');
+    navigate(`/problems/${problem.id}`);
   };
-
   const handleContestSelect = (contest) => {
-    setSelectedContest(contest);
-    setCurrentView('contest-details');
+    navigate(`/contests/${contest.id}`);
   };
-
   const handleBackToProblemList = () => {
-    setSelectedProblem(null);
-    setCurrentView('problems');
+    navigate('/problems');
   };
-
   const handleBackToContests = () => {
-    setSelectedContest(null);
-    setCurrentView('contests');
+    navigate('/contests');
   };
 
-  const renderCurrentView = () => {
-    switch (currentView) {
-      case 'dashboard':
-        return <DashboardPage />;
-      case 'problems':
-        return (
-          <ProblemListPage 
-            onViewChange={handleViewChange}
-            onProblemSelect={handleProblemSelect}
-          />
-        );
-      case 'contests':
-        return (
-          <ContestsPage 
-            onContestSelect={handleContestSelect}
-          />
-        );
-      case 'contest-details':
-        return (
-          <ContestDetailsPage 
-            contest={selectedContest}
-            onBackToContests={handleBackToContests}
-            onProblemSelect={handleProblemSelect}
-          />
-        );
-      case 'problem-solving':
-        return (
-          <ProblemSolvingPage 
-            problem={selectedProblem}
-            onBackToProblemList={handleBackToProblemList}
-          />
-        );
-      case 'profile':
-        return <ProfilePage />;
-      case 'exam':
-        return <ExamPage onBackToDashboard={handleBackToDashboard} />;
-      case 'courses':
-        return (
-          <CoursesPage 
-            onCourseSelect={handleCourseSelect}
-            onBackToDashboard={handleBackToDashboard}
-          />
-        );
-      case 'learning-paths':
-        return (
-          <LearningPathsPage 
-            onPathSelect={handlePathSelect}
-            onBackToDashboard={handleBackToDashboard}
-          />
-        );
-      default:
-        return <DashboardPage />;
-    }
-  };
-
-  if (currentView === 'problem-solving') {
-    // Problem solving page uses full screen layout
+  // Layout logic for full screen problem-solving
+  if (location.pathname.startsWith('/problems/') || location.pathname === '/problem-solving') {
     return (
       <div className="h-screen overflow-hidden">
-        {renderCurrentView()}
+        <Routes>
+          <Route path="/problems/:problemId" element={<ProblemSolvingPage onBackToProblemList={handleBackToProblemList} />} />
+        </Routes>
       </div>
     );
   }
 
   return (
-    <DashboardLayout 
-      currentView={currentView} 
-      onViewChange={handleViewChange}
-    >
-      {renderCurrentView()}
+    <DashboardLayout>
+      <Routes>
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/problems" element={<ProblemListPage onProblemSelect={handleProblemSelect} />} />
+        <Route path="/contests" element={<ContestsPage onContestSelect={handleContestSelect} />} />
+        <Route path="/contests/:contestId" element={<ContestDetailsPage onBackToContests={handleBackToContests} onProblemSelect={handleProblemSelect} />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/exam" element={<ExamPage onBackToDashboard={handleBackToDashboard} />} />
+        <Route path="/courses" element={<CoursesPage onCourseSelect={handleCourseSelect} onBackToDashboard={handleBackToDashboard} />} />
+        <Route path="/courses/:courseId" element={<CoursesPage onBackToDashboard={handleBackToDashboard} />} />
+        <Route path="/learning-paths" element={<LearningPathsPage onPathSelect={handlePathSelect} onBackToDashboard={handleBackToDashboard} />} />
+        <Route path="/learning-paths/:pathId" element={<LearningPathsPage onBackToDashboard={handleBackToDashboard} />} />
+        <Route path="*" element={<DashboardPage />} />
+      </Routes>
     </DashboardLayout>
   );
 };
@@ -165,7 +100,9 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <AppContent />
+          <BrowserRouter>
+            <AppContent />
+          </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
     </ThemeProvider>

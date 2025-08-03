@@ -5,12 +5,15 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Badge } from './ui/badge';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const DashboardLayout = ({ children, currentView, onViewChange }) => {
+const DashboardLayout = ({ children }) => {
   const { user, logout } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Icons as inline SVGs - moved to top to avoid hoisting issues
   const HomeIcon = ({ className }) => (
@@ -56,13 +59,13 @@ const DashboardLayout = ({ children, currentView, onViewChange }) => {
   );
 
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: HomeIcon },
-    { id: 'courses', label: 'Courses', icon: BookIcon },
-    { id: 'learning-paths', label: 'Learning Paths', icon: PathIcon },
-    { id: 'exam', label: 'Take Exam', icon: ExamIcon },
-    { id: 'problems', label: 'Problem List', icon: CodeIcon },
-    { id: 'contests', label: 'Contests', icon: TrophyIcon },
-    { id: 'profile', label: 'Profile', icon: UserIcon },
+    { id: 'dashboard', label: 'Dashboard', icon: HomeIcon, path: '/dashboard' },
+    { id: 'courses', label: 'Courses', icon: BookIcon, path: '/courses' },
+    { id: 'learning-paths', label: 'Learning Paths', icon: PathIcon, path: '/learning-paths' },
+    { id: 'exam', label: 'Take Exam', icon: ExamIcon, path: '/exam' },
+    { id: 'problems', label: 'Problem List', icon: CodeIcon, path: '/problems' },
+    { id: 'contests', label: 'Contests', icon: TrophyIcon, path: '/contests' },
+    { id: 'profile', label: 'Profile', icon: UserIcon, path: '/profile' },
   ];
 
   const SearchIcon = ({ className }) => (
@@ -121,14 +124,14 @@ const DashboardLayout = ({ children, currentView, onViewChange }) => {
           <ul className="space-y-2">
             {menuItems.map((item) => {
               const Icon = item.icon;
-              const isActive = currentView === item.id;
-              
+              // Active if current path starts with menu path (for nested routes)
+              const isActive = location.pathname === item.path || location.pathname.startsWith(item.path + '/');
               return (
                 <li key={item.id}>
                   <Button
                     variant={isActive ? "default" : "ghost"}
                     className={`w-full justify-start ${sidebarCollapsed ? 'px-2' : 'px-3'}`}
-                    onClick={() => onViewChange(item.id)}
+                    onClick={() => navigate(item.path)}
                   >
                     <Icon className="w-5 h-5 shrink-0" />
                     {!sidebarCollapsed && (

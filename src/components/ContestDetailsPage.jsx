@@ -12,7 +12,7 @@ import {
   TableRow,
 } from './ui/table';
 
-const ContestDetailsPage = ({ contest, onBackToContests, onProblemSelect }: any) => {
+const ContestDetailsPage = ({ contest, onBackToContests, onProblemSelect }) => {
   const [timeRemaining, setTimeRemaining] = useState('');
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const ContestDetailsPage = ({ contest, onBackToContests, onProblemSelect }: any)
     };
 
     return (
-      <Badge variant={variants[status] as any} className={colors[status]}>
+      <Badge variant={variants[status]} className={colors[status]}>
         {labels[status]}
       </Badge>
     );
