@@ -73,76 +73,62 @@ const DashboardPage = ({ onViewChange }: any) => {
 
       {/* Learning Features Quick Access */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <Card className="card-colorful group hover:scale-[1.03] transition-all duration-300 cursor-pointer">
-          <CardHeader className="pb-4">
-            <div className="flex items-center justify-between mb-3">
-              <div className="p-3 bg-gradient-primary rounded-xl shadow-primary">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <Badge className="achievement-badge">Popular</Badge>
-            </div>
-            <CardTitle className="text-xl bg-gradient-primary bg-clip-text text-transparent">
+        <Card className="bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/20 hover:border-primary/40 transition-all cursor-pointer group">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center text-lg">
+              <svg className="w-6 h-6 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
               Explore Courses
             </CardTitle>
-            <CardDescription className="text-base">Master new skills with our comprehensive interactive course library</CardDescription>
+            <CardDescription>Master new skills with our comprehensive course library</CardDescription>
           </CardHeader>
           <CardContent>
             <Button 
               onClick={() => onViewChange?.('courses')}
-              className="w-full button-gradient font-semibold py-3 text-lg"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group-hover:scale-105 transition-transform"
             >
               Browse Courses
             </Button>
           </CardContent>
         </Card>
 
-        <Card className="card-colorful group hover:scale-[1.03] transition-all duration-300 cursor-pointer">
-          <CardHeader className="pb-4">
-            <div className="flex items-center justify-between mb-3">
-              <div className="p-3 bg-gradient-secondary rounded-xl shadow-secondary">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <Badge variant="secondary" className="bg-gradient-secondary text-white">Featured</Badge>
-            </div>
-            <CardTitle className="text-xl bg-gradient-secondary bg-clip-text text-transparent">
+        <Card className="bg-gradient-to-br from-secondary/10 to-primary/10 border-secondary/20 hover:border-secondary/40 transition-all cursor-pointer group">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center text-lg">
+              <svg className="w-6 h-6 mr-2 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
               Take Assessment
             </CardTitle>
-            <CardDescription className="text-base">Test your knowledge with our gamified interactive exams</CardDescription>
+            <CardDescription>Test your knowledge with our interactive exams</CardDescription>
           </CardHeader>
           <CardContent>
             <Button 
               onClick={() => onViewChange?.('exam')}
-              className="w-full button-secondary-gradient font-semibold py-3 text-lg"
+              variant="outline" 
+              className="w-full border-secondary text-secondary hover:bg-secondary/10 group-hover:scale-105 transition-transform"
             >
               Start Exam
             </Button>
           </CardContent>
         </Card>
 
-        <Card className="card-colorful group hover:scale-[1.03] transition-all duration-300 cursor-pointer">
-          <CardHeader className="pb-4">
-            <div className="flex items-center justify-between mb-3">
-              <div className="p-3 bg-gradient-warm rounded-xl shadow-elegant">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
-              </div>
-              <Badge className="bg-gradient-warm text-white">Guided</Badge>
-            </div>
-            <CardTitle className="text-xl bg-gradient-warm bg-clip-text text-transparent">
+        <Card className="bg-gradient-to-br from-warning/10 to-error/10 border-warning/20 hover:border-warning/40 transition-all cursor-pointer group">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center text-lg">
+              <svg className="w-6 h-6 mr-2 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
               Learning Paths
             </CardTitle>
-            <CardDescription className="text-base">Follow structured roadmaps tailored to achieve your goals</CardDescription>
+            <CardDescription>Follow structured roadmaps to achieve your goals</CardDescription>
           </CardHeader>
           <CardContent>
             <Button 
               onClick={() => onViewChange?.('learning-paths')}
               variant="outline" 
-              className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 text-lg transition-all"
+              className="w-full border-warning text-warning hover:bg-warning/10 group-hover:scale-105 transition-transform"
             >
               View Paths
             </Button>
@@ -152,77 +138,49 @@ const DashboardPage = ({ onViewChange }: any) => {
 
       {/* Top Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="stats-card group hover:scale-[1.02] transition-transform duration-200">
-          <CardHeader className="pb-3">
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Problems Solved</CardTitle>
-              <div className="p-2 bg-gradient-primary rounded-lg shadow-primary">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-            </div>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Problems Solved</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">{user.problemsSolved}</div>
-            <div className="text-sm text-muted-foreground mt-2">
+            <div className="text-3xl font-bold text-primary">{user.problemsSolved}</div>
+            <div className="text-sm text-muted-foreground mt-1">
               out of {user.submissionStats.easy.total + user.submissionStats.medium.total + user.submissionStats.hard.total} total
             </div>
           </CardContent>
         </Card>
 
-        <Card className="stats-card group hover:scale-[1.02] transition-transform duration-200">
-          <CardHeader className="pb-3">
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Current Rating</CardTitle>
-              <div className="p-2 bg-gradient-secondary rounded-lg shadow-secondary">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-            </div>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Current Rating</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold bg-gradient-secondary bg-clip-text text-transparent">{user.rating}</div>
-            <Badge className="achievement-badge mt-2">
+            <div className="text-3xl font-bold text-primary">{user.rating}</div>
+            <Badge variant="secondary" className="mt-1">
               {user.rank}
             </Badge>
           </CardContent>
         </Card>
 
-        <Card className="stats-card group hover:scale-[1.02] transition-transform duration-200">
-          <CardHeader className="pb-3">
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Acceptance Rate</CardTitle>
-              <div className="p-2 bg-gradient-success rounded-lg shadow-success">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-            </div>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Acceptance Rate</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold bg-gradient-success bg-clip-text text-transparent">{user.acceptanceRate}%</div>
-            <div className="text-sm text-muted-foreground mt-2">
+            <div className="text-3xl font-bold text-success">{user.acceptanceRate}%</div>
+            <div className="text-sm text-muted-foreground mt-1">
               {user.problemsSolved} / {user.totalSubmissions} submissions
             </div>
           </CardContent>
         </Card>
 
-        <Card className="stats-card group hover:scale-[1.02] transition-transform duration-200">
-          <CardHeader className="pb-3">
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Badges Earned</CardTitle>
-              <div className="p-2 bg-gradient-warm rounded-lg shadow-elegant">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-              </div>
-            </div>
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Badges Earned</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold bg-gradient-warm bg-clip-text text-transparent">{user.badges.length}</div>
-            <div className="text-sm text-muted-foreground mt-2">achievements unlocked</div>
+            <div className="text-3xl font-bold text-warning">{user.badges.length}</div>
+            <div className="text-sm text-muted-foreground mt-1">achievements unlocked</div>
           </CardContent>
         </Card>
       </div>
@@ -411,11 +369,11 @@ const DashboardPage = ({ onViewChange }: any) => {
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {user.badges.map((badge, index) => (
-              <div key={index} className="flex items-center space-x-4 p-4 rounded-xl card-colorful group hover:scale-[1.02] transition-all duration-200">
-                <div className="text-3xl p-2 bg-gradient-primary rounded-lg shadow-primary">{badge.icon}</div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-lg bg-gradient-primary bg-clip-text text-transparent">{badge.name}</h4>
-                  <p className="text-sm text-muted-foreground mt-1">{badge.description}</p>
+              <div key={index} className="flex items-center space-x-3 p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors">
+                <div className="text-2xl">{badge.icon}</div>
+                <div>
+                  <h4 className="font-medium">{badge.name}</h4>
+                  <p className="text-sm text-muted-foreground">{badge.description}</p>
                 </div>
               </div>
             ))}
