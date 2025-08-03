@@ -25,7 +25,7 @@ import {
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 
-const DashboardPage = ({ onViewChange }: any) => {
+const DashboardPage = ({ onViewChange }) => {
   const { user } = useAuth();
 
   // Prepare chart data

@@ -20,8 +20,8 @@ import LearningPathsPage from './components/LearningPathsPage';
 const queryClient = new QueryClient();
 
 const AppContent = () => {
-  const { user, loading }: any = useAuth();
-  const [currentView, setCurrentView] = useState<'dashboard' | 'problems' | 'contests' | 'contest-details' | 'problem-solving' | 'profile' | 'exam' | 'courses' | 'learning-paths'>('dashboard');
+  const { user, loading } = useAuth();
+  const [currentView, setCurrentView] = useState('dashboard');
   const [selectedProblem, setSelectedProblem] = useState(null);
   const [selectedContest, setSelectedContest] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -42,7 +42,7 @@ const AppContent = () => {
     return <AuthPage />;
   }
 
-  const handleViewChange = (view: any) => {
+  const handleViewChange = (view) => {
     setCurrentView(view);
     setSelectedProblem(null);
     setSelectedContest(null);
@@ -50,12 +50,12 @@ const AppContent = () => {
     setSelectedPath(null);
   };
 
-  const handleCourseSelect = (courseId: string) => {
+  const handleCourseSelect = (courseId) => {
     setSelectedCourse(courseId);
     // Navigate to course content or continue with course selection logic
   };
 
-  const handlePathSelect = (pathId: string) => {
+  const handlePathSelect = (pathId) => {
     setSelectedPath(pathId);
     // Navigate to learning path content or continue with path selection logic
   };
@@ -64,12 +64,12 @@ const AppContent = () => {
     setCurrentView('dashboard');
   };
 
-  const handleProblemSelect = (problem: any) => {
+  const handleProblemSelect = (problem) => {
     setSelectedProblem(problem);
     setCurrentView('problem-solving');
   };
 
-  const handleContestSelect = (contest: any) => {
+  const handleContestSelect = (contest) => {
     setSelectedContest(contest);
     setCurrentView('contest-details');
   };

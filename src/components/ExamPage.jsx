@@ -6,32 +6,18 @@ import { Badge } from '@/components/ui/badge';
 import { Timer, CheckCircle, XCircle, Clock, BookOpen, Award } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-interface Question {
-  id: string;
-  question: string;
-  options: string[];
-  correctAnswer: number;
-  explanation: string;
-  difficulty: 'easy' | 'medium' | 'hard';
-  subject: string;
-}
-
-interface ExamPageProps {
-  onBackToDashboard: () => void;
-}
-
-const ExamPage: React.FC<ExamPageProps> = ({ onBackToDashboard }) => {
+const ExamPage = ({ onBackToDashboard }) => {
   const { toast } = useToast();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [answers, setAnswers] = useState<{ [key: number]: number }>({});
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [answers, setAnswers] = useState({});
   const [timeRemaining, setTimeRemaining] = useState(3600); // 1 hour
   const [examStarted, setExamStarted] = useState(false);
   const [examFinished, setExamFinished] = useState(false);
   const [showResults, setShowResults] = useState(false);
 
   // Mock exam data
-  const examQuestions: Question[] = [
+  const examQuestions = [
     {
       id: '1',
       question: 'What is the time complexity of binary search?',
@@ -78,7 +64,7 @@ const ExamPage: React.FC<ExamPageProps> = ({ onBackToDashboard }) => {
     }
   }, [examStarted, examFinished, timeRemaining]);
 
-  const formatTime = (seconds: number) => {
+  const formatTime = (seconds) => {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
@@ -93,7 +79,7 @@ const ExamPage: React.FC<ExamPageProps> = ({ onBackToDashboard }) => {
     });
   };
 
-  const handleAnswerSelect = (answerIndex: number) => {
+  const handleAnswerSelect = (answerIndex) => {
     setSelectedAnswer(answerIndex);
   };
 
@@ -128,7 +114,7 @@ const ExamPage: React.FC<ExamPageProps> = ({ onBackToDashboard }) => {
     return { correct, total: examQuestions.length, percentage: Math.round((correct / examQuestions.length) * 100) };
   };
 
-  const getDifficultyColor = (difficulty: string) => {
+  const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
       case 'easy': return 'text-success';
       case 'medium': return 'text-warning';
