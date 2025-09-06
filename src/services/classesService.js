@@ -3,7 +3,7 @@
  * Integrates with the backend Classes API for role-based functionality
  */
 
-const API_BASE_URL = '/api/classes';
+const API_BASE_URL = 'http://localhost:8000/api/classes';
 
 class ClassesService {
   constructor() {
