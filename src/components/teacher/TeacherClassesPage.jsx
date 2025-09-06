@@ -373,7 +373,12 @@ const TeacherClassesPage = () => {
                   <TableRow key={classItem.id}>
                     <TableCell>
                       <div>
-                        <div className="font-medium">{classItem.name}</div>
+                        <div 
+                          className="font-medium text-primary hover:underline cursor-pointer"
+                          onClick={() => navigate(`/teacher/classes/${classItem.id}`)}
+                        >
+                          {classItem.name}
+                        </div>
                         <div className="text-sm text-muted-foreground">Code: {classItem.code}</div>
                       </div>
                     </TableCell>

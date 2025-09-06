@@ -297,68 +297,86 @@ const LearningPathsPage = ({ onPathSelect, onBackToDashboard }) => {
                 const userPathProgress = userProgress[path.id];
                 
                 return (
-                  <Card key={path.id} className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex gap-2">
+                  <Card key={path.id} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 bg-gradient-to-br from-card to-card/90 backdrop-blur-sm">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-lg" />
+                    <CardHeader className="relative">
+                      <div className="flex justify-between items-start mb-3">
+                        <div className="flex gap-2 flex-wrap">
                           {getDifficultyBadge(path.difficulty)}
                           {getCategoryBadge(path.category)}
                         </div>
-                        <div className="text-right">
-                          <div className="text-sm text-muted-foreground">Rating</div>
-                          <div className="font-medium">{path.rating}/5.0</div>
+                        <div className="text-right bg-primary/10 rounded-lg p-2">
+                          <div className="text-xs text-muted-foreground">Rating</div>
+                          <div className="font-bold text-primary flex items-center">
+                            ⭐ {path.rating}
+                          </div>
                         </div>
                       </div>
-                      <CardTitle className="text-lg">{path.title}</CardTitle>
-                      <CardDescription>{path.description}</CardDescription>
+                      <CardTitle className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                        {path.title}
+                      </CardTitle>
+                      <CardDescription className="text-sm leading-relaxed">
+                        {path.description}
+                      </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
+                    <CardContent className="relative">
+                      <div className="space-y-5">
                         {/* Progress Section */}
-                        <div>
+                        <div className="bg-muted/50 rounded-lg p-4">
                           <div className="flex justify-between text-sm mb-2">
-                            <span>Progress</span>
-                            <span className={`font-medium ${getProgressColor(progress)}`}>
+                            <span className="font-medium">Learning Progress</span>
+                            <span className={`font-bold text-lg ${getProgressColor(progress)}`}>
                               {progress}%
                             </span>
                           </div>
-                          <Progress value={progress} className="mb-2" />
-                          <div className="text-xs text-muted-foreground">
-                            {userPathProgress.completedLessons}/{path.totalLessons} lessons • 
-                            {userPathProgress.completedExercises}/{path.totalExercises} exercises • 
-                            {userPathProgress.completedProjects}/{path.totalProjects} projects
+                          <Progress value={progress} className="mb-3 h-2" />
+                          <div className="grid grid-cols-3 gap-2 text-xs">
+                            <div className="text-center">
+                              <div className="font-semibold text-blue-600">{userPathProgress.completedLessons}/{path.totalLessons}</div>
+                              <div className="text-muted-foreground">Lessons</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="font-semibold text-green-600">{userPathProgress.completedExercises}/{path.totalExercises}</div>
+                              <div className="text-muted-foreground">Exercises</div>
+                            </div>
+                            <div className="text-center">
+                              <div className="font-semibold text-purple-600">{userPathProgress.completedProjects}/{path.totalProjects}</div>
+                              <div className="text-muted-foreground">Projects</div>
+                            </div>
                           </div>
                         </div>
 
-                        {/* Current Status */}
-                        <div className="text-sm">
-                          <div className="flex justify-between">
-                            <span>Current Lesson:</span>
-                            <span className="font-medium">{userPathProgress.currentLesson}</span>
+                        {/* Learning Stats */}
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <span className="text-muted-foreground">Current:</span>
+                            <div className="font-semibold">Lesson {userPathProgress.currentLesson}</div>
                           </div>
-                          <div className="flex justify-between">
-                            <span>Duration:</span>
-                            <span className="font-medium">{path.duration}</span>
+                          <div>
+                            <span className="text-muted-foreground">Duration:</span>
+                            <div className="font-semibold">{path.duration}</div>
                           </div>
-                          <div className="flex justify-between">
-                            <span>Instructor:</span>
-                            <span className="font-medium">{path.instructor}</span>
+                          <div className="col-span-2">
+                            <span className="text-muted-foreground">Instructor:</span>
+                            <div className="font-semibold text-primary">{path.instructor}</div>
                           </div>
                         </div>
 
                         {/* Action Buttons */}
-                        <div className="flex gap-2">
+                        <div className="flex gap-3">
                           <Button 
-                            className="flex-1"
+                            className="flex-1 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary font-medium"
                             onClick={() => onPathSelect(path.id)}
                           >
-                            Continue Learning
+                            Continue Learning →
                           </Button>
                           <Button 
                             variant="outline"
+                            size="sm"
                             onClick={() => navigate(`/learning-paths/${path.id}`)}
+                            className="border-primary/20 hover:border-primary/40"
                           >
-                            View Details
+                            Details
                           </Button>
                         </div>
                       </div>

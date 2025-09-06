@@ -32,11 +32,14 @@ import AdminSystemHealthPage from './components/admin/AdminSystemHealthPage';
 import TeacherClassesPage from './components/teacher/TeacherClassesPage';
 import TeacherQuestionBankPage from './components/teacher/TeacherQuestionBankPage';
 import TeacherExamsPage from './components/teacher/TeacherExamsPage';
+import ClassDetailsPage from './components/teacher/ClassDetailsPage';
 
 // Student components
 import StudentClassesPage from './components/student/StudentClassesPage';
 import StudentExamsPage from './components/student/StudentExamsPage';
 import StudentPracticePage from './components/student/StudentPracticePage';
+import StudentClassDetailsPage from './components/student/StudentClassDetailsPage';
+import StudentExamInterface from './components/student/StudentExamInterface';
 
 import { mockProblems, mockContests } from './data/mockData';
 
@@ -172,6 +175,14 @@ const AppContent = () => {
           } 
         />
         <Route 
+          path="/teacher/classes/:classId" 
+          element={
+            <RoleBasedRoute allowedRoles={['teacher']}>
+              <ClassDetailsPage />
+            </RoleBasedRoute>
+          } 
+        />
+        <Route 
           path="/teacher/questions" 
           element={
             <RoleBasedRoute allowedRoles={['teacher']}>
@@ -194,6 +205,22 @@ const AppContent = () => {
           element={
             <RoleBasedRoute allowedRoles={['student']}>
               <StudentClassesPage />
+            </RoleBasedRoute>
+          } 
+        />
+        <Route 
+          path="/student/classes/:classId" 
+          element={
+            <RoleBasedRoute allowedRoles={['student']}>
+              <StudentClassDetailsPage />
+            </RoleBasedRoute>
+          } 
+        />
+        <Route 
+          path="/student/exams/:examId" 
+          element={
+            <RoleBasedRoute allowedRoles={['student']}>
+              <StudentExamInterface />
             </RoleBasedRoute>
           } 
         />

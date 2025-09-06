@@ -283,71 +283,149 @@ const ProblemSolvingPage = ({ problem, onBackToProblemList }) => {
           className="w-1 bg-border hover:bg-primary cursor-col-resize transition-colors"
         />
 
-        {/* Right Panel */}
+        {/* Right Panel - Split into two halves */}
         <div style={{ width: `${100 - leftWidth}%` }} className="flex flex-col">
-          {/* Code Editor Header */}
-          <div className="p-4 border-b border-border bg-card">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <h3 className="font-semibold">Code Editor</h3>
-                <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
-                  <SelectTrigger className="w-40">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {languages.map((lang) => (
-                      <SelectItem key={lang.value} value={lang.value}>{lang.label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+          {/* Top Half - Code Editor */}
+          <div className="h-1/2 flex flex-col border-b">
+            {/* Code Editor Header */}
+            <div className="p-4 border-b border-border bg-card">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                  <h3 className="font-semibold">Code Editor</h3>
+                  <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
+                    <SelectTrigger className="w-40">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {languages.map((lang) => (
+                        <SelectItem key={lang.value} value={lang.value}>{lang.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
 
-              <div className="flex items-center space-x-2">
-                <Button variant="outline" size="sm" onClick={handleReset}>
-                  <RefreshIcon className="w-4 h-4 mr-2" />
-                  Reset
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={handleRun}
-                  disabled={isRunning}
-                >
-                  <PlayIcon className="w-4 h-4 mr-2" />
-                  {isRunning ? 'Running...' : 'Run'}
-                </Button>
-                <Button 
-                  size="sm" 
-                  onClick={handleSubmit}
-                  disabled={isSubmitting}
-                >
-                  <SendIcon className="w-4 h-4 mr-2" />
-                  {isSubmitting ? 'Submitting...' : 'Submit'}
-                </Button>
+                <div className="flex items-center space-x-2">
+                  <Button variant="outline" size="sm" onClick={handleReset}>
+                    <RefreshIcon className="w-4 h-4 mr-2" />
+                    Reset
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={handleRun}
+                    disabled={isRunning}
+                  >
+                    <PlayIcon className="w-4 h-4 mr-2" />
+                    {isRunning ? 'Running...' : 'Run'}
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                  >
+                    <SendIcon className="w-4 h-4 mr-2" />
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                  </Button>
+                </div>
               </div>
+            </div>
+
+            {/* Code Editor */}
+            <div className="flex-1 min-h-0">
+              <CodeMirror
+                value={code}
+                onChange={(value) => setCode(value)}
+                extensions={[languages.find(l => l.value === selectedLanguage)?.extension]}
+                theme={isDarkMode ? oneDark : undefined}
+                style={{ height: '100%', width: '100%', fontSize: '14px' }}
+                basicSetup={{
+                  lineNumbers: true,
+                  foldGutter: true,
+                  dropCursor: false,
+                  allowMultipleSelections: false,
+                  indentOnInput: true,
+                  bracketMatching: true,
+                  closeBrackets: true,
+                  autocompletion: true,
+                  highlightSelectionMatches: false,
+                }}
+              />
             </div>
           </div>
 
-          {/* Code Editor */}
-          <div className="flex-1 flex flex-col min-h-0">
-            <CodeMirror
-              value={code}
-              onChange={(value) => setCode(value)}
-              extensions={[languages.find(l => l.value === selectedLanguage)?.extension]}
-              theme={isDarkMode ? oneDark : undefined}
-              style={{ height: '32em', width: '100%', fontSize: '14px' }}
-              basicSetup={{
-                lineNumbers: true,
-                foldGutter: true,
-                dropCursor: false,
-                allowMultipleSelections: false,
-                indentOnInput: true,
-                bracketMatching: true,
-                closeBrackets: true,
-                autocompletion: true,
-                highlightSelectionMatches: false,
-              }}
-            />
+          {/* Bottom Half - LeetCode Style Test Cases and Output */}
+          <div className="h-1/2 flex flex-col">
+            <Tabs defaultValue="testcases" className="flex-1 flex flex-col">
+              <div className="p-4 border-b">
+                <TabsList>
+                  <TabsTrigger value="testcases">Test Cases</TabsTrigger>
+                  <TabsTrigger value="output">Output</TabsTrigger>
+                  <TabsTrigger value="expected">Expected</TabsTrigger>
+                </TabsList>
+              </div>
+
+              <TabsContent value="testcases" className="flex-1 p-4 overflow-auto custom-scrollbar">
+                <div className="space-y-4">
+                  <h4 className="font-medium">Example Test Cases</h4>
+                  {problem.examples.map((example, index) => (
+                    <div key={index} className="bg-muted p-4 rounded-lg">
+                      <div className="space-y-2">
+                        <div className="text-sm">
+                          <span className="font-medium text-green-600">Input:</span>
+                          <div className="bg-background p-2 rounded mt-1 font-mono text-sm">
+                            {example.input}
+                          </div>
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-medium text-blue-600">Expected Output:</span>
+                          <div className="bg-background p-2 rounded mt-1 font-mono text-sm">
+                            {example.output}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  
+                  <div className="pt-4 border-t">
+                    <h5 className="font-medium mb-2">Custom Input</h5>
+                    <Textarea
+                      placeholder="Enter your custom test input here..."
+                      value={customInput}
+                      onChange={(e) => setCustomInput(e.target.value)}
+                      className="min-h-[80px] font-mono text-sm"
+                    />
+                  </div>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="output" className="flex-1 p-4 overflow-auto custom-scrollbar">
+                <div className="space-y-4">
+                  <h4 className="font-medium">Your Output</h4>
+                  <div className="bg-code p-4 rounded-lg min-h-[200px] font-mono text-sm whitespace-pre-wrap">
+                    {output || 'Run your code to see the output here...'}
+                  </div>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="expected" className="flex-1 p-4 overflow-auto custom-scrollbar">
+                <div className="space-y-4">
+                  <h4 className="font-medium">Expected Output</h4>
+                  {problem.examples.map((example, index) => (
+                    <div key={index} className="bg-muted p-4 rounded-lg">
+                      <div className="text-sm font-medium mb-2">Test Case {index + 1}</div>
+                      <div className="bg-background p-3 rounded font-mono text-sm">
+                        {example.output}
+                      </div>
+                      {example.explanation && (
+                        <div className="mt-2 text-sm text-muted-foreground">
+                          <strong>Explanation:</strong> {example.explanation}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </div>

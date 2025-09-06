@@ -41,6 +41,7 @@ import {
 } from '../ui/dropdown-menu';
 import { useToast } from '../../hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
+import CreateExamModal from './CreateExamModal';
 
 const TeacherExamsPage = () => {
   const { user } = useAuth();
